@@ -16,12 +16,12 @@ const tryFetch = async (url) => {
 
 const fetchCourses = async (filters = null) => {
     const filter = filters ? `list?filters=${filters}` : 'list';
-    const data = await tryFetch(DEVELOPMENT_URL + filter);
+    const data = await tryFetch(PRODUCTION_URL + filter);
     return data
 }
 
 const fetchCourse = async (courseId) => {
-    const data = await tryFetch(DEVELOPMENT_URL + `detail/${courseId}`);
+    const data = await tryFetch(PRODUCTION_URL + `detail/${courseId}`);
     return data;
 }
 
