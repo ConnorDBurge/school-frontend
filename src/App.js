@@ -22,6 +22,9 @@ const App = () => {
                 <Route
                     path="courses"
                     element={<CoursesPage />} />
+                <Route
+                    path="courses/detail/:courseId"
+                    element={<StudentPage />} />
             </Routes>
         </Router>
     );
