@@ -1,13 +1,31 @@
-import React from 'react';
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from "react-router-dom";
+import StudentsAPI from '../api/StudentsAPI';
 
-const StudentPage = (props) => {
+const StudentPage = () => {
+
+    const [student, setStudent] = useState(null)
 
     const { studentId } = useParams()
+    useEffect(() => {
+        StudentsAPI.fetchStudent(studentId)
+            .then((response) => {
+                setStudent(response);
+            })
+    }, [])
+
+    const renderedCourses = student && student.courses.map((course, index) => {
+        return <Link to="school" key={index}>{course.course_id}: {course.course_name}</Link>
+    })
 
     return (
         <div>
-            <h1></h1>
+            {!student
+                ? null
+                : <div>
+                    <h1>{student.first_name} {student.last_name}</h1>
+                    {renderedCourses}
+                </div>}
         </div>
     );
 }

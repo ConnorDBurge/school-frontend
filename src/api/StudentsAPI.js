@@ -1,4 +1,5 @@
-const BASE_URL = 'https://school-backend-v1.herokuapp.com/school/students/'
+const PRODUCTION_URL = 'https://school-backend-v1.herokuapp.com/school/students/'
+const DEVELOPMENT_URL = 'http://localhost:8000/school/students/'
 
 const tryFetch = async (url) => {
     try {
@@ -14,11 +15,17 @@ const tryFetch = async (url) => {
 }
 
 const fetchStudents = async (filters = null) => {
-    const filter = filters ? `?filters=${filters}` : '';
-    const data = await tryFetch(BASE_URL + filter);
+    const filter = filters ? `list?filters=${filters}` : 'list';
+    const data = await tryFetch(DEVELOPMENT_URL + filter);
     return data
 }
 
+const fetchStudent = async (studentId) => {
+    const data = await tryFetch(DEVELOPMENT_URL + `detail/${studentId}`);
+    return data;
+}
+
 export default {
-    fetchStudents
+    fetchStudents,
+    fetchStudent
 }

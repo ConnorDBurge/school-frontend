@@ -18,7 +18,7 @@ const StudentPage = () => {
     const renderedStudents = students.map((student, index) => {
         return (
             <h1 key={index}>
-                <Link to={`/students/${student.id}`}>
+                <Link to={`/students/detail/${student.id}`}>
                     {student.first_name} {student.last_name}
                 </Link>
             </h1>
