@@ -15,7 +15,11 @@ const StudentPage = () => {
     }, [])
 
     const renderedCourses = student && student.courses.map((course, index) => {
-        return <Link to="school" key={index}>{course.course_id}: {course.course_name}</Link>
+        return (
+            <h1 key={index}>
+                <Link to="" key={index}>{course.course_id}: {course.course_name}</Link>
+            </h1>
+        )
     })
 
     return (
