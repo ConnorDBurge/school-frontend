@@ -17,7 +17,7 @@ const CoursePage = () => {
     const renderedStudents = course && course.students.map((student, index) => {
         return (
             <h1 key={index}>
-                <Link to="">{student.first_name} {student.last_name}</Link>
+                <Link to={`/students/detail/${student.id}`}>{student.first_name} {student.last_name}</Link>
             </h1>
         )
     })
