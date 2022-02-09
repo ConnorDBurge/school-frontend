@@ -1,3 +1,5 @@
+import Cookie from './cookie';
+
 const PRODUCTION_URL = 'https://school-backend-v1.herokuapp.com/school/students/'
 const DEVELOPMENT_URL = 'http://localhost:8000/school/students/'
 
@@ -14,22 +16,6 @@ const tryFetch = async (url) => {
     }
 }
 
-const getCookie = (name) => {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
 const fetchStudents = async (filters = null) => {
     const filter = filters ? `list?filters=${filters}` : 'list';
     const data = await tryFetch(DEVELOPMENT_URL + filter);
@@ -43,7 +29,7 @@ const fetchStudent = async (studentId) => {
 
 const addStudent = (studentObject) => {
     try {
-        const csrftoken = getCookie('csrftoken');
+        const csrftoken = Cookie.getCookie('csrftoken');
         return fetch(DEVELOPMENT_URL + 'create/', {
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +45,7 @@ const addStudent = (studentObject) => {
 
 const deleteStudent = async (studentId) => {
     try {
-        const csrftoken = getCookie('csrftoken');
+        const csrftoken = Cookie.getCookie('csrftoken');
         return fetch(DEVELOPMENT_URL + `delete/${studentId}`, {
             headers: {
                 'Content-Type': 'application/json',

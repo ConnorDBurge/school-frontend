@@ -1,3 +1,5 @@
+import Cookie from './cookie';
+
 const PRODUCTION_URL = 'https://school-backend-v1.herokuapp.com/school/courses/'
 const DEVELOPMENT_URL = 'http://localhost:8000/school/courses/'
 
@@ -14,22 +16,6 @@ const tryFetch = async (url) => {
     }
 }
 
-const getCookie = (name) => {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
 
 const fetchCourses = async (filters = null) => {
     const filter = filters ? `list?filters=${filters}` : 'list';
@@ -44,7 +30,7 @@ const fetchCourse = async (courseId) => {
 
 const addCourse = (courseObject) => {
     try {
-        const csrftoken = getCookie('csrftoken');
+        const csrftoken = Cookie.getCookie('csrftoken');
         return fetch(DEVELOPMENT_URL + 'create/', {
             headers: {
                 'Content-Type': 'application/json',
@@ -58,8 +44,24 @@ const addCourse = (courseObject) => {
     }
 }
 
+const deleteCourse = async (courseId) => {
+    try {
+        const csrftoken = Cookie.getCookie('csrftoken');
+        return fetch(DEVELOPMENT_URL + `delete/${courseId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            method: "DELETE"
+        });
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 export default {
     fetchCourses,
     fetchCourse,
-    addCourse
+    addCourse,
+    deleteCourse
 }
