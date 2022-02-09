@@ -22,10 +22,18 @@ const StudentPage = () => {
             })
     }
 
+    const dropCourse = (courseId) => {
+        StudentsAPI.dropCourse(studentId, courseId)
+            .then((response) => {
+                setMessage(response.message);
+            })
+    }
+
     const renderedCourses = student && student.courses.map((course, index) => {
         return (
             <h1 key={index}>
                 <Link to={`/school/courses/detail/${course.id}`} key={index}>{course.course_id}: {course.course_name}</Link>
+                <button onClick={() => dropCourse(course.id)}>Drop Course</button>
             </h1>
         )
     })
@@ -35,7 +43,6 @@ const StudentPage = () => {
             {message !== ''
                 ? <div>
                     <Link to='/school/students'>Back to Students</Link>
-                    <h3>{message}</h3>
                 </div>
                 : <div>
                     <button onClick={deleteStudent}>Delete Student</button>
@@ -47,6 +54,9 @@ const StudentPage = () => {
                             {renderedCourses}
                         </div>}
                 </div>}
+            {message !== ''
+                ? <h3>{message}</h3>
+                : null}
         </div>
     );
 }

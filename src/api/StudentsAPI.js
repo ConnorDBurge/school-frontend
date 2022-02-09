@@ -77,10 +77,28 @@ const enrollStudent = async (studentId, courseId) => {
     }
 }
 
+const dropCourse = async (studentId, courseId) => {
+    try {
+        const csrftoken = Cookie.getCookie('csrftoken');
+        const response = await fetch(DEVELOPMENT_URL + `drop/${studentId}/${courseId}/`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            method: "POST"
+        });
+        const data = await response.json()
+        return data
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 export default {
     fetchStudents,
     fetchStudent,
     addStudent,
     deleteStudent,
-    enrollStudent
+    enrollStudent,
+    dropCourse
 }
