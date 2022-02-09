@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
 import StudentsPage from './pages/StudentsPage';
 import StudentPage from './pages/StudentPage';
 import CreateStudent from './pages/CreateStudent';
 import CoursesPage from './pages/CoursesPage';
 import CoursePage from './pages/CoursePage';
-import HomePage from './pages/HomePage';
+import CreateCourse from './pages/CreateCourse';
 
 const App = () => {
 
@@ -33,6 +34,9 @@ const App = () => {
                 <Route
                     path="courses/detail/:courseId"
                     element={<CoursePage />} />
+                <Route
+                    path="courses/create/"
+                    element={<CreateCourse />} />
             </Routes>
         </Router>
     );

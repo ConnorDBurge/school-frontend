@@ -28,6 +28,7 @@ const CoursePage = () => {
     return (
         <div>
             <h1>Course Page</h1>
+            <Link to="/courses/create">Create New Course</Link>
             {renderedCourses}
         </div>
     );

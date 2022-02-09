@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import StudentAPI from '../api/StudentsAPI';
+import StudentsAPI from '../api/StudentsAPI';
 
 const CreateStudent = () => {
 
@@ -13,7 +13,7 @@ const CreateStudent = () => {
             'first_name': `${event.target.first_name.value}`,
             'last_name': `${event.target.last_name.value}`
         }
-        const response = await StudentAPI.addStudent(student);
+        const response = await StudentsAPI.addStudent(student);
         if (response.status === 200) {
             setStudentSubmitted(true);
         }
