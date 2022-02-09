@@ -1,10 +1,11 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import StudentsPage from './pages/StudentsPage';
 import StudentPage from './pages/StudentPage';
-import CoursesPage from './pages/CoursesPage'
-import CoursePage from './pages/CoursePage'
+import CreateStudent from './pages/CreateStudent';
+import CoursesPage from './pages/CoursesPage';
+import CoursePage from './pages/CoursePage';
 import HomePage from './pages/HomePage';
 
 const App = () => {
@@ -26,6 +27,9 @@ const App = () => {
                 <Route
                     path="students/detail/:studentId"
                     element={<StudentPage />} />
+                <Route
+                    path="students/create/"
+                    element={<CreateStudent />} />
                 <Route
                     path="courses/detail/:courseId"
                     element={<CoursePage />} />

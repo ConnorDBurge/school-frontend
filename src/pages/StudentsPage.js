@@ -28,6 +28,7 @@ const StudentPage = () => {
     return (
         <div>
             <h1>Students</h1>
+            <Link to="/students/create">Create New Student</Link>
             {renderedStudents}
         </div>
     );
