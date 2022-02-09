@@ -6,8 +6,8 @@ const StudentPage = () => {
 
     const [student, setStudent] = useState(null)
     const [message, setMessage] = useState('')
-
     const { studentId } = useParams()
+
     useEffect(() => {
         StudentsAPI.fetchStudent(studentId)
             .then((response) => {
@@ -18,7 +18,7 @@ const StudentPage = () => {
     const deleteStudent = () => {
         StudentsAPI.deleteStudent(studentId)
             .then((response) => {
-                setMessage(`${student.first_name} ${student.last_name} deleted`);
+                setMessage(response.message);
             })
     }
 
@@ -39,6 +39,7 @@ const StudentPage = () => {
                 </div>
                 : <div>
                     <button onClick={deleteStudent}>Delete Student</button>
+                    <button><Link to={`/school/students/enroll/${studentId}`}>Enroll in Class</Link></button>
                     {!student
                         ? null
                         : <div>

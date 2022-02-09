@@ -46,13 +46,32 @@ const addStudent = (studentObject) => {
 const deleteStudent = async (studentId) => {
     try {
         const csrftoken = Cookie.getCookie('csrftoken');
-        return fetch(DEVELOPMENT_URL + `delete/${studentId}`, {
+        const response = await fetch(DEVELOPMENT_URL + `delete/${studentId}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrftoken
             },
             method: "DELETE"
         });
+        const data = await response.json()
+        return data
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+const enrollStudent = async (studentId, courseId) => {
+    try {
+        const csrftoken = Cookie.getCookie('csrftoken');
+        const response = await fetch(DEVELOPMENT_URL + `enroll/${studentId}/${courseId}/`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            method: "POST"
+        });
+        const data = await response.json()
+        return data
     } catch (err) {
         console.error(err);
     }
@@ -62,5 +81,6 @@ export default {
     fetchStudents,
     fetchStudent,
     addStudent,
-    deleteStudent
+    deleteStudent,
+    enrollStudent
 }

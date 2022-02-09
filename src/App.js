@@ -8,6 +8,7 @@ import CreateStudent from './pages/CreateStudent';
 import CoursesPage from './pages/CoursesPage';
 import CoursePage from './pages/CoursePage';
 import CreateCourse from './pages/CreateCourse';
+import EnrollStudent from './pages/EnrollStudent';
 
 const App = () => {
 
@@ -37,6 +38,9 @@ const App = () => {
                 <Route
                     path="school/courses/create/"
                     element={<CreateCourse />} />
+                <Route
+                    path="school/students/enroll/:studentId/"
+                    element={<EnrollStudent />} />
             </Routes>
         </Router>
     );
