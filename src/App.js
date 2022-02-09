@@ -16,26 +16,26 @@ const App = () => {
             <Navbar />
             <Routes>
                 {/* Navbar Routes */}
-                <Route path="" element={<HomePage />} />
+                <Route path="school" element={<HomePage />} />
                 <Route
-                    path="students"
+                    path="school/students"
                     element={<StudentsPage />} />
                 <Route
-                    path="courses"
+                    path="school/courses"
                     element={<CoursesPage />} />
 
                 {/* Other Routes */}
                 <Route
-                    path="students/detail/:studentId"
+                    path="school/students/detail/:studentId"
                     element={<StudentPage />} />
                 <Route
-                    path="students/create/"
+                    path="school/students/create/"
                     element={<CreateStudent />} />
                 <Route
-                    path="courses/detail/:courseId"
+                    path="school/courses/detail/:courseId"
                     element={<CoursePage />} />
                 <Route
-                    path="courses/create/"
+                    path="school/courses/create/"
                     element={<CreateCourse />} />
             </Routes>
         </Router>

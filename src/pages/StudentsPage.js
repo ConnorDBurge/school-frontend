@@ -18,9 +18,9 @@ const StudentPage = () => {
     const renderedStudents = students.map((student, index) => {
         return (
             <h1 key={index}>
-                <Link to={`/students/detail/${student.id}`}>
+                <Link to={`/school/students/detail/${student.id}`}>
                     {student.first_name} {student.last_name}
-                </Link>
+                </Link> - Courses {student.courses.length}
             </h1>
         )
     })
@@ -28,7 +28,7 @@ const StudentPage = () => {
     return (
         <div>
             <h1>Students</h1>
-            <Link to="/students/create">Create New Student</Link>
+            <Link to="/school/students/create">Create New Student</Link>
             {renderedStudents}
         </div>
     );

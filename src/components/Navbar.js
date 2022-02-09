@@ -8,9 +8,9 @@ const Navbar = () => {
                 borderBottom: "solid 1px",
                 paddingBottom: "1rem"
             }}>
-            <Link to="">Home</Link> |{" "}
-            <Link to="/students">Students</Link> |{" "}
-            <Link to="/courses">Courses</Link>
+            <Link to="/school">Home</Link> |{" "}
+            <Link to="/school/students">Students</Link> |{" "}
+            <Link to="/school/courses">Courses</Link>
         </nav>
     );
 }

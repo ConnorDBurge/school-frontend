@@ -18,7 +18,7 @@ const CoursePage = () => {
     const renderedCourses = courses.map((course, index) => {
         return (
             <h1 key={index}>
-                <Link to={`/courses/detail/${course.id}`}>
+                <Link to={`/school/courses/detail/${course.id}`}>
                     {course.course_id}: {course.course_name}
                 </Link>
             </h1>
@@ -28,7 +28,7 @@ const CoursePage = () => {
     return (
         <div>
             <h1>Course Page</h1>
-            <Link to="/courses/create">Create New Course</Link>
+            <Link to="/school/courses/create">Create New Course</Link>
             {renderedCourses}
         </div>
     );
